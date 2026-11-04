@@ -1,10 +1,10 @@
 # GLab Enterprise Asset Register
 
-Record one row per approved export or source file where separate tracking is useful.
+Record each approved export and source file where separate tracking is useful.
 
 | Asset ID | Asset name | Repository path | Format | Dimensions / size | Version | Status | Source / creator | Rights / attribution | Notes |
 |---|---|---|---|---|---|---|---|---|---|
-| GLAB-ENT-001 | Example: primary logo | identity/logos/ | SVG | — | 1.0 | draft | GLab | GLab proprietary | Replace example when approved file is added |
+| GLAB-ENT-001 | Example: primary logo | identity/logos/ | SVG | — | 1.0 | draft | GLab | GLab proprietary | Replace example when the approved file is added |
 
 ## Status values
 

@@ -1,27 +1,37 @@
 # GLab Assets
 
-Centralized brand and visual asset repository for GLab applications, websites, GitHub repositories and Pages, GLab Enterprise (GLab Ent.), documentation, projects, and future GLab services.
+The central asset library for the GLab ecosystem: shared brand identity, GLab Enterprise corporate materials, application and website assets, project resources, and reusable design resources.
 
-## Repository structure
+## Root structure
 
-- `brand-guidelines/` — shared identity and usage standards.
-- `color-palettes/` — shared and product-specific color systems.
-- `icons/` and `illustrations/` — reusable visual resources.
-- `logos/` — approved shared GLab marks.
-- `products/` — product-specific collections for apps, websites, projects, and enterprise.
-- `resources/` — shared banners, social media, and reusable templates.
-- `typography/` and `wallpapers/` — shared typography guidance and wallpapers.
+```text
+glab-assets/
+├── brand/          # Shared GLab identity: logos, guidelines, colors, typography
+├── enterprise/     # GLab Enterprise corporate asset library
+├── products/       # Application, website, and project-specific assets
+├── resources/      # Shared banners, social media, and reusable templates
+├── shared/         # Reusable icons, illustrations, and wallpapers
+├── BRAND-ASSETS-LICENSE.md
+├── LICENSE
+└── NOTICE.md
+```
 
-The active corporate collection for GLab Enterprise is [products/enterprise/glab-enterprise](products/enterprise/glab-enterprise/README.md). The separate `products/enterprise/_template/` remains a starter for future enterprise offerings or modules.
+## Where assets belong
+
+- **`brand/`** — ecosystem-wide GLab logos, identity rules, color palettes, and typography.
+- **`enterprise/`** — GLab Enterprise identity, QR artwork, business stationery, digital assets, marketing, editable source files, and asset records. Start at [enterprise/README.md](enterprise/README.md).
+- **`products/`** — assets specific to individual GLab apps, websites, or projects. Copy the relevant `_template/` directory for a new product.
+- **`resources/`** — reusable banners, social media material, and general document/design templates. Includes a starter template for a separate future enterprise offering.
+- **`shared/`** — reusable ecosystem-wide icons, illustrations, and wallpapers.
 
 ## Asset handling
 
-- Use descriptive lowercase kebab-case filenames and the naming rules in each collection.
+- Use descriptive lowercase kebab-case filenames and the naming rules documented in each collection.
 - Keep approved exports in their logical category and editable masters in the relevant `source/` folder.
 - Preserve copyright notices, creator credits, source references, original numbering, and rights information.
 - Store third-party license and attribution details with or referenced from the relevant asset.
-- Keep product-specific assets in their product collection; put only approved ecosystem-wide assets in shared top-level folders.
-- Check usage and rights metadata before replacing or removing files.
+- Keep product-specific assets in the product or enterprise collection; put only approved ecosystem-wide assets in shared categories.
+- Check usage and rights metadata before replacing, moving, or removing files.
 - Never commit credentials, private keys, confidential customer material, or unnecessary personal data.
 
 ## License and permissions
