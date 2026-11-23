@@ -1,6 +1,6 @@
 # GLab Loader
 
-**Version:** 1.0.1  
+**Version:** 1.0.2  
 **Owner:** GLab Enterprise (GLab Ent.)  
 **Package type:** Private-use browser component  
 **JavaScript class:** `GLabLoader`  
@@ -20,6 +20,7 @@ GLab-loader/
 ├── GLAB-PROPRIETARY-LICENSE.md
 ├── NOTICE.md
 ├── VERSION
+├── CHANGELOG.md
 ├── demo/
 │   └── index.html
 └── tests/
@@ -63,7 +64,7 @@ The script exposes a global JavaScript class named `GLabLoader`.
   document.addEventListener("DOMContentLoaded", async () => {
     const loader = new GLabLoader({
       // Uses the pinned GLab Assets image URL by default. Override with a local path offline.
-      message: "Loading application…",
+      message: "Loading…",
       theme: "light",
       timeoutMs: 9000
     });
@@ -134,7 +135,7 @@ const loader = new GLabLoader({
   timeoutMs: 0
 });
 
-loader.show("Preparing workspace…");
+loader.show("Loading…");
 ```
 
 The constructor builds the loader's internal markup inside that root element.

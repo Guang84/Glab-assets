@@ -1,5 +1,5 @@
 /*
- * GLab Loader v1.0.1
+ * GLab Loader v1.0.2
  * Copyright (c) 2026 GLab Enterprise (GLab Ent.). All rights reserved.
  * Private-use package. See GLAB-PROPRIETARY-LICENSE.md.
  */

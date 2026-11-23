@@ -30,13 +30,13 @@
       const loader = new GLabLoader({
         // Uses the approved, version-pinned GLab Assets PNG by default.
         // For offline use, override: logoUrl: "../assets/glab-mark-256.png",
-        message: "Loading GLab…",
+        message: "Loading…",
         theme: "auto",
         timeoutMs: 0
       });
 
       document.getElementById("show").addEventListener("click", () => {
-        loader.show("Opening workspace…");
+        loader.show("Loading…");
       });
       document.getElementById("progress").addEventListener("click", () => {
         loader.show("Synchronising data…");
