@@ -1,0 +1,158 @@
+/*
+ * GLab Loader v1.0.1
+ * Copyright (c) 2026 GLab Enterprise (GLab Ent.). All rights reserved.
+ * Private-use package. See GLAB-PROPRIETARY-LICENSE.md.
+ */
+.glab-loader {
+  --glab-loader-bg: #f6f3ec;
+  --glab-loader-ink: #102019;
+  --glab-loader-muted: #56625b;
+  --glab-loader-line: rgb(16 32 25 / 16%);
+  --glab-loader-accent: #c75b31;
+
+  position: fixed;
+  inset: 0;
+  z-index: var(--glab-loader-z-index, 99999);
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100%;
+  min-height: 100dvh;
+  padding: 24px;
+  overflow: auto;
+  background: var(--glab-loader-bg);
+  color: var(--glab-loader-ink);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 220ms ease, visibility 220ms ease;
+  font-family: Manrope, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.glab-loader[data-theme="dark"] {
+  --glab-loader-bg: #101a15;
+  --glab-loader-ink: #f3f1e9;
+  --glab-loader-muted: #b6c0b8;
+  --glab-loader-line: rgb(243 241 233 / 20%);
+  --glab-loader-accent: #e27a4e;
+}
+
+@media (prefers-color-scheme: dark) {
+  .glab-loader[data-theme="auto"] {
+    --glab-loader-bg: #101a15;
+    --glab-loader-ink: #f3f1e9;
+    --glab-loader-muted: #b6c0b8;
+    --glab-loader-line: rgb(243 241 233 / 20%);
+    --glab-loader-accent: #e27a4e;
+  }
+}
+
+.glab-loader.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.glab-loader__content {
+  display: grid;
+  justify-items: center;
+  gap: 15px;
+  width: min(100%, 300px);
+  text-align: center;
+}
+
+.glab-loader__mark {
+  display: block;
+  width: 76px;
+  height: 76px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 22px rgb(16 32 25 / 14%));
+  transform-origin: center;
+  animation: glab-loader-heartbeat 1.22s ease-in-out infinite;
+}
+
+.glab-loader__mark[hidden] {
+  display: none;
+}
+
+.glab-loader__label {
+  max-width: 100%;
+  color: var(--glab-loader-muted);
+  font: 600 0.88rem/1.5 Manrope, system-ui, sans-serif;
+  letter-spacing: 0.025em;
+  overflow-wrap: anywhere;
+}
+
+.glab-loader__track {
+  display: block;
+  width: 126px;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--glab-loader-line);
+}
+
+.glab-loader__track-fill {
+  display: block;
+  width: 42%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--glab-loader-accent);
+  animation: glab-loader-travel 1.12s ease-in-out infinite;
+}
+
+.glab-loader[data-progress="determinate"] .glab-loader__track-fill {
+  width: 0;
+  animation: none;
+  transform: none;
+  transition: width 180ms ease;
+}
+
+html.glab-loader-active,
+html.glab-loader-active body {
+  cursor: progress;
+  overflow: hidden;
+}
+
+@keyframes glab-loader-heartbeat {
+  0%, 100% { transform: scale(1); }
+  13% { transform: scale(1.085); }
+  27% { transform: scale(1); }
+  41% { transform: scale(1.115); }
+  69% { transform: scale(1); }
+}
+
+@keyframes glab-loader-travel {
+  from { transform: translateX(-125%); }
+  to { transform: translateX(250%); }
+}
+
+@media (max-width: 600px) {
+  .glab-loader__mark {
+    width: 66px;
+    height: 66px;
+  }
+
+  .glab-loader__content {
+    gap: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glab-loader,
+  .glab-loader__track-fill {
+    transition: none;
+  }
+
+  .glab-loader__mark,
+  .glab-loader__track-fill {
+    animation: none;
+  }
+}
+
+@media print {
+  .glab-loader {
+    display: none !important;
+  }
+}

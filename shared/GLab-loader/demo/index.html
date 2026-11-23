@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>GLab Loader — Private Demo</title>
+  <link rel="stylesheet" href="../GLab-loader.css">
+  <style>
+    :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #eef0eb; color: #102019; }
+    main { width: min(92vw, 680px); padding: 32px; border-radius: 20px; background: #fff; box-shadow: 0 14px 45px rgb(16 32 25 / 10%); }
+    h1 { margin-top: 0; }
+    p { line-height: 1.6; }
+    .controls { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    button { padding: 10px 16px; border: 0; border-radius: 10px; background: #102019; color: white; font: inherit; cursor: pointer; }
+    button.secondary { background: #dce3dc; color: #102019; }
+    code { padding: 2px 5px; border-radius: 5px; background: #edf0ea; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #101a15; color: #f3f1e9; }
+      main { background: #1d2a22; }
+      button { background: #e27a4e; color: #101a15; }
+      button.secondary { background: #34453a; color: #f3f1e9; }
+      code { background: #34453a; }
+    }
+  </style>
+  <script src="../GLab-loader.js" defer></script>
+  <script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+      const loader = new GLabLoader({
+        // Uses the approved, version-pinned GLab Assets PNG by default.
+        // For offline use, override: logoUrl: "../assets/glab-mark-256.png",
+        message: "Loading GLab…",
+        theme: "auto",
+        timeoutMs: 0
+      });
+
+      document.getElementById("show").addEventListener("click", () => {
+        loader.show("Opening workspace…");
+      });
+      document.getElementById("progress").addEventListener("click", () => {
+        loader.show("Synchronising data…");
+        let current = 0;
+        const timer = window.setInterval(() => {
+          current = Math.min(100, current + 10);
+          loader.setProgress(current);
+          if (current >= 100) {
+            window.clearInterval(timer);
+            window.setTimeout(() => loader.hide(), 350);
+          }
+        }, 180);
+      });
+      document.getElementById("hide").addEventListener("click", () => loader.hide());
+    });
+  </script>
+</head>
+<body>
+  <main>
+    <h1>GLab Loader</h1>
+    <p>Private integration demo for the <code>GLabLoader</code> JavaScript class and <code>.glab-loader</code> CSS component.</p>
+    <p>The loader is controlled by the host application. It does not intercept links or automatically detect when an app has finished loading.</p>
+    <div class="controls">
+      <button id="show" type="button">Show loader</button>
+      <button id="progress" type="button" class="secondary">Show progress demo</button>
+      <button id="hide" type="button" class="secondary">Hide loader</button>
+    </div>
+  </main>
+</body>
+</html>
